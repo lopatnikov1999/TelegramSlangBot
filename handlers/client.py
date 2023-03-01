@@ -12,8 +12,13 @@ class FSMclient(StatesGroup):
 
 
 async def commands_start(message: types.Message):
+    help = '*100+ сленговых слов и фраз!* \n\n' \
+           'Доступные команды: \n' \
+           '*Начать* - запустить бота \n' \
+           '*Слово* - ввести слово \n' \
+           '*Список слов* - открыть список слов'
     try:
-        await bot.send_message(message.from_user.id, 'Что хотите узнать?', reply_markup=kb_client)
+        await bot.send_message(message.from_user.id, help, reply_markup=kb_client, parse_mode='Markdown')
         await message.delete()
     except:
         await message.reply('Напишите боту в лс')
